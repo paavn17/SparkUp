@@ -35,7 +35,7 @@ const Login: React.FC = () => {
       const userCredential: UserCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("User logged in:", userCredential.user);
       setMessage("Login successful! Redirecting...");
-      setTimeout(() => navigate("/home"), 1500); // Redirect after 1.5s
+      setTimeout(() => navigate("/"), 1500); // Redirect after 1.5s
     } catch (error: any) {
       setError(error.message);
     }

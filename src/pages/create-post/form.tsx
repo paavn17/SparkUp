@@ -27,9 +27,10 @@ const Form = () => {
         addDoc(postsRef,{
             title: data.title,
             description: data.description,
-            usernamee: user?.displayName,
-            id: user?.uid
+            usernamee: user?.displayName || user?.email,
+            userId: user?.uid
         })
+        console.log(user?.displayName)
         navigate("/")
     }
 
@@ -73,9 +74,6 @@ const Form = () => {
   </button>
 </form>
 
-
-
-  
   )
 }
 

@@ -22,17 +22,21 @@ const Form = () => {
 
     const postsRef = collection(db,"posts")
 
-    const onCreatePost = async(data : any) => {
-        // console.log(data)
-        addDoc(postsRef,{
+    const onCreatePost = async (data: any) => {
+        try {
+          await addDoc(postsRef, {
             title: data.title,
             description: data.description,
             usernamee: user?.displayName || user?.email,
-            userId: user?.uid
-        })
-        console.log(user?.displayName)
-        navigate("/")
-    }
+            userId: user?.uid,
+          });
+          console.log("Post added successfully");
+          navigate("/");
+        } catch (error) {
+          console.error("Error adding post:", error);
+        }
+      };
+      
 
   return (
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { auth,provider } from "../config/firebase";
 import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 
 
@@ -19,6 +20,13 @@ const Signup = () => {
       const [error, setError] = useState<string | null>(null);
       const [message, setMessage] = useState<string | null>(null);
       const navigate = useNavigate(); // Used for navigation
+      const [user, loading] = useAuthState(auth);
+
+      useEffect(() => {
+        if (user) {
+          navigate("/");
+        }
+      }, [user, navigate]);
 
       const signInWithGoogle = async() =>{
        const result =  signInWithPopup(auth, provider)

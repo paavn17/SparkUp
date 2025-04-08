@@ -23,72 +23,72 @@ const Navbar = () => {
   const closeDropdown = () => setShowDropdown(false);
 
   return (
-    <nav className="flex items-center justify-between px-4 py-2 h-16 bg-white shadow-md text-gray-800 relative z-50">
-      {/* Left - Logo */}
-      <div className="flex items-center">
-        <Link to="/">
-          <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
+    <nav className="flex items-center justify-between px-4 py-2 bg-white shadow-md text-gray-800 relative z-50 h-20">
+    {/* Left - Logo */}
+    <div className="flex items-center h-full">
+      <Link to="/" className="flex items-center h-full">
+        <img src="/image.png" alt="Logo" className="h-full w-auto object-contain" />
+      </Link>
+    </div>
+  
+    {/* Right - Navigation and Auth */}
+    <div className="flex items-center space-x-6">
+      {/* Links */}
+      <div className="hidden md:flex space-x-6">
+        <Link
+          to="/"
+          className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
+        >
+          Home
         </Link>
-      </div>
-
-      {/* Right - Navigation and Auth */}
-      <div className="flex items-center space-x-6">
-        {/* Links */}
-        <div className="hidden md:flex space-x-6">
+        {user && (
           <Link
-            to="/"
+            to="/create"
             className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
           >
-            Home
-          </Link>
-          {user && (
-            <Link
-              to="/create"
-              className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
-            >
-              Create
-            </Link>
-          )}
-        </div>
-
-        {/* Auth Buttons */}
-        {user ? (
-          <div className="relative">
-            <button onClick={toggleDropdown} className="focus:outline-none">
-              <img
-                src={user.photoURL || ""}
-                alt="User"
-                className="h-10 w-10 rounded-full object-cover"
-              />
-            </button>
-
-            {showDropdown && (
-              <div
-                className="absolute right-0 mt-4 w-32 bg-white rounded-md shadow-lg  text-sm"
-                onMouseLeave={closeDropdown}
-              >
-                <button
-                  onClick={() => {
-                    logoutUser();
-                    closeDropdown();
-                  }}
-                  className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
-        ) : (
-          <Link
-            to="/login"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors duration-200"
-          >
-            Log In
+            Create
           </Link>
         )}
       </div>
-    </nav>
+  
+      {/* Auth Buttons */}
+      {user ? (
+        <div className="relative">
+          <button onClick={toggleDropdown} className="focus:outline-none">
+            <img
+               src={user?.photoURL || `https://api.dicebear.com/7.x/lorelei/svg?seed=${user?.uid}`}
+              className="h-10 w-10 rounded-full object-cover"
+            />
+          </button>
+  
+          {showDropdown && (
+            <div
+              className="absolute right-0 mt-4 w-32 bg-white rounded-md shadow-lg text-sm"
+              onMouseLeave={closeDropdown}
+            >
+              <button
+                onClick={() => {
+                  logoutUser();
+                  closeDropdown();
+                }}
+                className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <Link
+          to="/login"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors duration-200"
+        >
+          Log In
+        </Link>
+      )}
+    </div>
+  </nav>
+  
   );
 };
 

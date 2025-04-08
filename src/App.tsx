@@ -6,6 +6,7 @@ import Login from './pages/login'
 import Navbar from './components/navbar'
 import Signup from './pages/signup'
 import CreatePost from './pages/create-post/create-post'
+import ProtectedRoute from './components/protectedroute'
 
 
 function App() {
@@ -16,7 +17,12 @@ function App() {
         <Router>
           <Navbar/>
           <Routes>
-            <Route path="/" element={<Main/>}/>
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Main /> 
+            </ProtectedRoute>
+            }
+            />
             <Route path="/login" element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/create' element={<CreatePost/>}/>

@@ -7,6 +7,7 @@
 }
 
 
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -51,31 +52,38 @@
 }
 
 
-/* Custom Scrollbar Styling */
+/* Scrollbar Base */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
+/* Light Mode Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 10px;
 }
 
+/* Light Mode Thumb */
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Dark Mode Track */
 body.dark-mode ::-webkit-scrollbar-track {
-  background: #1f2937; /* Tailwind gray-800 */
+  background: #1a1a2e; /* closer to your bg, deep blue-black */
 }
 
+/* Dark Mode Thumb */
 body.dark-mode ::-webkit-scrollbar-thumb {
-  background: #4b5563; /* Tailwind gray-600 */
+  background: #6b21a8; /* Tailwind's violet-800 for subtle theme match */
+}
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #a855f7; /* violet-500 when hovered */
 }
 
 /* Post width and center */

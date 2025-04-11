@@ -23,7 +23,7 @@ const Navbar = () => {
   const closeDropdown = () => setShowDropdown(false);
 
   return (
-    <nav className="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-[#1A102F] via-[#3C1A5B] to-[#1A102F] shadow-md text-white relative z-50 h-20">
+    <nav className="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-[#1A102F] via-[#3C1A5B] to-[#1A102F] shadow-md text-white relative z-50 h-20 rounded">
   {/* Left - Logo */}
   <div className="flex items-center h-full">
     <Link to="/" className="flex items-center h-full">

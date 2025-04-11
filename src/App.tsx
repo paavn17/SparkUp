@@ -8,6 +8,7 @@ import Signup from './pages/signup'
 import CreatePost from './pages/create-post/create-post'
 import ProtectedRoute from './components/protectedroute'
 import Profile from './components/profile'
+import UserProfile from './pages/userprofile'
 
 
 function App() {
@@ -19,10 +20,11 @@ function App() {
           <Navbar/>
           <Routes>
             <Route path="/" element={<ProtectedRoute><Main /> </ProtectedRoute>}/>
-            <Route path="/profile" element={<ProtectedRoute><Profile /> </ProtectedRoute>}/>
+            {/* <Route path="/profile" element={<ProtectedRoute><Profile /> </ProtectedRoute>}/> */}
             <Route path="/login" element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/create' element={<CreatePost/>}/>
+            <Route path="/profile/:userid" element={<UserProfile />} />
           </Routes>
         </Router>
       </div>

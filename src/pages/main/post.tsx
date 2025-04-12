@@ -12,7 +12,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../../config/firebase";
 import { PostType as IPost } from "./main";
 import "../../App.css";
-import { Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Zap } from "lucide-react";
 

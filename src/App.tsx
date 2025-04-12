@@ -7,7 +7,7 @@ import Navbar from './components/navbar'
 import Signup from './pages/signup'
 import CreatePost from './pages/create-post/create-post'
 import ProtectedRoute from './components/protectedroute'
-import Profile from './components/profile'
+// import Profile from './components/profile'
 import UserProfile from './pages/userprofile'
 
 

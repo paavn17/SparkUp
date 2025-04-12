@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signOut,
   UserCredential,
 } from "firebase/auth";
 import { auth, provider } from "../config/firebase";
@@ -17,7 +15,7 @@ const Login: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const navigate = useNavigate(); // Used for navigation
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     if (user) {
@@ -25,17 +23,6 @@ const Login: React.FC = () => {
     }
   }, [user, navigate]);
 
-  const registerUser = async (): Promise<void> => {
-    setError(null);
-    setMessage(null);
-    try {
-      const userCredential: UserCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log("User registered:", userCredential.user);
-      setMessage("User registered successfully! You can now log in.");
-    } catch (error: any) {
-      setError(error.message);
-    }
-  };
 
   const loginUser = async (): Promise<void> => {
     setError(null);
@@ -45,18 +32,6 @@ const Login: React.FC = () => {
       console.log("User logged in:", userCredential.user);
       setMessage("Login successful! Redirecting...");
       setTimeout(() => navigate("/"), 1500); // Redirect after 1.5s
-    } catch (error: any) {
-      setError(error.message);
-    }
-  };
-
-  const logoutUser = async (): Promise<void> => {
-    setError(null);
-    setMessage(null);
-    try {
-      await signOut(auth);
-      console.log("User signed out");
-      setMessage("Logged out successfully.");
     } catch (error: any) {
       setError(error.message);
     }

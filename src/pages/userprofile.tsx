@@ -41,9 +41,8 @@ const UserProfile = () => {
 
       if (posts.length > 0) {
         setUserData({
-          usernamee: posts[0].usernamee,
-          email: posts[0].email,
-        });
+            usernamee: posts[0].usernamee,
+          } as any); 
       }
     } catch (err) {
       console.error("Error fetching user posts:", err);

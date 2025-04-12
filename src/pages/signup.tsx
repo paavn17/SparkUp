@@ -20,7 +20,7 @@ const Signup = () => {
       const [error, setError] = useState<string | null>(null);
       const [message, setMessage] = useState<string | null>(null);
       const navigate = useNavigate(); // Used for navigation
-      const [user, loading] = useAuthState(auth);
+      const [user] = useAuthState(auth);
 
       useEffect(() => {
         if (user) {
